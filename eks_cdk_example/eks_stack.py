@@ -41,13 +41,13 @@ class EKSStack(Stack):
 def create_nodegroup(cluster):
     return cluster.add_nodegroup_capacity('eks-nodegroup',
                                           instance_types=[
-                                              aws_ec2.InstanceType('m4.large'),
+                                              aws_ec2.InstanceType('t4g.medium'),
                                           ],
                                           disk_size=25,
                                           min_size=2,
                                           max_size=3,
-                                          ami_type=aws_eks.NodegroupAmiType.BOTTLEROCKET_X86_64,
                                           desired_size=2,
+                                          ami_type=aws_eks.NodegroupAmiType.BOTTLEROCKET_ARM_64,
                                           remote_access=aws_eks.NodegroupRemoteAccess(
                                               ssh_key_name='eks-ssh-keypair'
                                           ),
